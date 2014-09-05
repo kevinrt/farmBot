@@ -19,11 +19,14 @@ Una guia para la programacion de clases en Arduino puede encontrarse aqui:
 #include "Arduino.h"
 #include "Brujula.h"
 #include "UltraSonido.h"
+#include <WiFly.h>  
 
 class Bot{
 
   public:
   // Variables
+  byte *server;
+  Client *client;
     int baud;
     int frentePin;
     int reverPint;
@@ -38,17 +41,21 @@ class Bot{
     
     //Funciones
     Bot();
+    ~Bot();
     void setupSerial();
     void setupBrujula();
     void direccion();
+     void setupWifly();
     
     void readSerial(int *);
+    void readServer(int *);
     void avanza();
     void retrocede();
     void parar();
     void girarDerecha();
     void girarIzquierda();
     void centrarDireccion();
+    boolean DetectaObstaculo();
     
     
   

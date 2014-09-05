@@ -1,6 +1,6 @@
 
 
-#include "Brujula.h"
+#include "UltraSonido.h"
 
 
 UltraSonido::UltraSonido(){
@@ -11,10 +11,10 @@ UltraSonido::UltraSonido(){
 
 
 
-boolean AlertaProximidad(){
+boolean UltraSonido::AlertaProximidad(){
 
   /*Activacion de pines Trigger Salida, y Echo entrada*/
-  pinMode(TriggerPin , OUTPUT ); /*El pulso ultrasónico              */
+  pinMode( TriggerPin , OUTPUT ); /*El pulso ultrasónico              */
   pinMode(EchoPin    , INPUT  ); /*Tiempo del rebote del ultrasonido */
   
   
@@ -29,10 +29,10 @@ boolean AlertaProximidad(){
   Distancia= int(0.017*Tiempo); /*fórmula para calcular la Distancia obteniendo un valor entero*/
   /*Monitorización en centímetros por el monitor serial*/
 
-  /* Serial.println("Distancia ");
+   Serial.println("Distancia ");
    Serial.println(Distancia);
    Serial.println(" cm");
-   */
+   
   
 
 

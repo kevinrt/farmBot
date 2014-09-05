@@ -23,7 +23,7 @@ int i, headingValue;
 //---------Librerias Externas------------
 
 #include <WiFly.h>         // Libreria del shield WiFly, Proporciona comunicacion WiFi
-#include "Credentials.h"   // Libreria externa proporciona atributos de conexion, Nombre de conexion y contraseña
+//#include "Credentials.h"   // Libreria externa proporciona atributos de conexion, Nombre de conexion y contraseña
 
 //---------------------------------------
 
@@ -34,14 +34,6 @@ byte server[] = {
   192,168,43,29}; // Direccion IP del servidor al que se conecta en formato de arreglo de bytes.
 
 Client client(server, 1234);     // Objeto cliente, que define el cliente que se conecta al servidor(server) en el puerto (1234).
-
-
-//-------Atributos de SensorUltraSonido-------
-
-int TriggerUltra    = 6 ;  //Pin del trigger del ultra
-int EchoUltra       = 5 ;  //Pin del Echo del ultra
-long distancia          ;
-long tiempo             ; 
 
 
 // Variable donde se leen los datos seriales enviados por teclado.
@@ -87,13 +79,16 @@ void loop() {
   
   bot.readSerial(&valorTecla);
   
+  boolean Detente= bot.DetectaObstaculo();
+  
   if (valorTecla == 119){
   bot.avanza();
   Serial.println("avanzando");
   
   }
-  if(valorTecla == 32){
+  if(Detente){
   bot.parar();
+  Serial.println("ME DETENGO");
   }
   
   if (valorTecla == 115){

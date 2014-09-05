@@ -1,4 +1,5 @@
 #include "Bot.h"
+#include "Credentials.h"
 
 Bot::Bot(){
   // Constructor... nada por ahora.
@@ -10,6 +11,15 @@ Bot::Bot(){
   enablePinGiro  = 11;
   DerechaPin     = 10;
   IzquierdaPin   =  9;
+  
+  
+  //Variables de conexion, servidor - cliente.
+  server= new byte[4];
+  server[0]=192;
+  server[1]=168;
+  server[2]=43;
+  server[3]=210;
+  client = new Client(server, 1234);
 
 
 }
@@ -36,6 +46,47 @@ void Bot::readSerial(int   * valorTecla){
     Serial.println(*valorTecla, DEC);
 
   }
+
+
+}
+
+void Bot::setupWifly(){
+
+  WiFly.begin();
+  if (!WiFly.join(ssid, passphrase)) {
+    Serial.println("Association failed.");
+    while (1) {
+      // Hang on failure.
+    }
+  }
+
+  Serial.println("connecting...");
+
+  if (client->connect()) {
+    Serial.println("connected");
+    client->println("Hello World!\n");
+    //client.println();
+  } 
+  else {
+    Serial.println("connection failed");
+  }
+
+}
+
+
+void Bot::readServer(int   * valorTecla){
+
+  if (client->available()){
+    *valorTecla = client->read();
+  }
+  //
+  //  if (Serial.available() > 0) {
+  //    *valorTecla = Serial.read(); 
+  //      // say what you got:
+  //
+  //    Serial.println(*valorTecla, DEC);
+  //
+  //  }
 
 
 }
@@ -100,8 +151,20 @@ void Bot::centrarDireccion(){
 }
 
 void Bot::direccion(){
-  brujula.direccion();
+//  brujula.direccion();
 }
+
+boolean Bot::DetectaObstaculo(){
+  
+  return ultrasonido.AlertaProximidad();
+}
+
+Bot::~Bot(){
+
+  delete client;
+
+}
+
 
 
 
