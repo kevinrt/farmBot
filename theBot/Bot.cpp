@@ -116,8 +116,8 @@ void Bot::retrocede(){
 void Bot::parar (){
   analogWrite( enablePinGiro, 255  );// tal vez no sea necesario
 
-  digitalWrite( frentePin   , HIGH );
-  digitalWrite( reverPint   , HIGH );
+  digitalWrite( frentePin   , LOW);
+  digitalWrite( reverPint   , LOW );
 }
 
 void Bot:: girarDerecha(){
