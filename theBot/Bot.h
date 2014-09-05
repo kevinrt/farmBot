@@ -18,6 +18,7 @@ Una guia para la programacion de clases en Arduino puede encontrarse aqui:
 
 #include "Arduino.h"
 #include "Brujula.h"
+#include "UltraSonido.h"
 
 class Bot{
 
@@ -32,6 +33,7 @@ class Bot{
     int DerechaPin;
     
     Brujula brujula;
+    UltraSonido ultrasonido;
     
     
     //Funciones
