@@ -2,7 +2,11 @@
 
 #include "UltraSonido.h"
 
+/*ESQUEMA DE CONEXION ULTRASONIDO
+http://4.bp.blogspot.com/-h2JVFwl3RVA/Uv99mU7yfHI/AAAAAAAAAIM/R7vpR8OPUx8/s1600/ultrasonido+hc.jpg
+*/
 
+ 
 UltraSonido::UltraSonido(){
   TriggerPin  = 5 ;
   EchoPin     = 4 ;

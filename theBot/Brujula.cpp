@@ -2,6 +2,11 @@
 
 #include "Brujula.h"
 
+/* ESQUEMA DE CONEXION DE BRUJULA
+
+http://2.bp.blogspot.com/-spu31Kj1NQw/TwLCYj4MJFI/AAAAAAAAABM/Jot68BKVsFI/s1600/Arduino_ADXL335_HMC6352.png
+*/
+
 
 Brujula::Brujula(){
 

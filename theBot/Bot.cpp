@@ -117,7 +117,7 @@ void Bot::parar (){
   analogWrite( enablePinGiro, 255  );// tal vez no sea necesario
 
   digitalWrite( frentePin   , LOW);
-  digitalWrite( reverPint   , LOW );
+  digitalWrite( reverPint   , LOW);
 }
 
 void Bot:: girarDerecha(){
